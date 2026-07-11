@@ -1,0 +1,29 @@
+Output Verification
+===================
+All 4 prefixes from R1 present in R2 table since R2 receives everything. Filtering only affects what R2 re-advertises onward
+R2#sh ip bgp
+BGP table version is 4, local router ID is 10.23.1.1
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*> 172.16.10.0/24   10.12.1.1                0             0 65100 i
+*> 172.16.20.0/24   10.12.1.1                0             0 65100 i
+*> 172.16.30.0/24   10.12.1.1                0             0 65100 i
+
+R2 Route advertisement to R3
+============================
+Confirming matching prefixes advertised to R3 by R2
+R2#sh ip bgp neighbors 10.23.1.2 advertised-routes
+BGP table version is 4, local router ID is 10.23.1.1
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*> 172.16.10.0/24   10.12.1.1                0             0 65100 i
+*> 172.16.30.0/24   10.12.1.1                0             0 65100 i
+
+Total number of prefixes 2
+R2#

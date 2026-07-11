@@ -1,0 +1,38 @@
+Interface Configuration
+========================
+R3#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#int fa0/0
+R3(config-if)#ip address 10.23.1.2 255.255.255.252
+R3(config-if)#no shutdown
+R3(config-if)#
+*Mar  1 00:27:00.939: %LINK-3-UPDOWN: Interface FastEthernet0/0, changed state to up
+*Mar  1 00:27:01.939: %LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+R3(config-if)#end
+R3#
+
+
+BGP Configuration
+=================
+R3(config)#router bgp 65300
+R3(config-router)#neighbor 10.23.1.1 remote-as 65200
+R3(config-router)#address-family ipv4 unicast
+*Mar  1 00:28:47.503: %BGP-5-ADJCHANGE: neighbor 10.23.1.1 Up
+R3(config-router-af)#
+R3(config-router-af)#neighbor 10.23.1.1 activate
+R3(config-router-af)#end
+R3#
+
+
+Conditional Matching Configuration
+==================================
+Using standard numbered ACL with "distribute-list"
+Only 172.16.10.0/24 and 172.16.30.0/24 pass. 172.16.20.0/24 is dropped from the outbound update to R3.
+R2(config)#access-list 10 permit 172.16.10.0 0.0.0.255
+R2(config)#access-list 10 permit 172.16.30.0 0.0.0.255
+R2(config)#access-list 10 deny any
+R2(config)#router bgp 65200
+R2(config-router)#neighbor 10.23.1.2 distribute-list 10 out
+R2(config-router)#end
+R2#
+
