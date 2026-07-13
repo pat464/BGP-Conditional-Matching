@@ -1,7 +1,8 @@
 Verification for permitted prefixes
 ===================================
-R3 only receives the permitted 2 prefixes.
+R3 only receives only the 2 advertised prefixes.
 Only 172.16.10.0/24 and 172.16.30.0/24 are permited, 172.16.20.0/24 is absent entirely.
+
 R3#sh ip bgp
 BGP table version is 5, local router ID is 10.23.1.2
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,

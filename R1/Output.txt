@@ -1,6 +1,7 @@
 Verification Steps
 =====================
-Confirming whether R1 is advertising all 4 networks (baseline, before filtering takes effect on R2 to R3)
+Confirming whether R1 is advertising all 3 networks (baseline, before filtering takes effect on R2 to R3)
+
 R1#sh ip bgp
 BGP table version is 4, local router ID is 172.16.30.1
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
@@ -13,4 +14,4 @@ Origin codes: i - IGP, e - EGP, ? - incomplete
 *> 172.16.30.0/24   0.0.0.0                  0         32768 i
 R1#
 
-All the 3 networks 172.16.10.0/24, 172.16.20.0/24 and 172.16.300.0/24 are a being advertised to the next hop that is R2 in the network.
+#All the 3 networks 172.16.10.0/24, 172.16.20.0/24 and 172.16.300.0/24 are a being advertised to the next hop that is R2 in the network.

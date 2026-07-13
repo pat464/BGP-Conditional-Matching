@@ -1,6 +1,6 @@
 Output Verification
 ===================
-All 4 prefixes from R1 present in R2 table since R2 receives everything. Filtering only affects what R2 re-advertises onward
+All 3 prefixes from R1 present in R2 table since R2 receives everything. Filtering only affects what R2 re-advertises onward
 R2#sh ip bgp
 BGP table version is 4, local router ID is 10.23.1.1
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
